@@ -18,3 +18,25 @@ doubleSmallNumber' x = (if x > 100 then x else x*2) + 1
 infix function: we call it by sandwiching it between arguments (usually numbers).
 prefix functions: In most imperative languages functions are called by writing the function name and then writing its parameters in parentheses, usually separated by commas. In Haskell, functions are called by writing the function name, a space and then the parameters, separated by spaces.
 -}
+
+
+{-
+ghci> succ 8
+9 
+The succ function takes anything that has a defined successor and returns that successor.
+-}
+
+
+{-
+The functions min and max take two things that can be put in an order (like numbers!). min returns the one that's lesser and max returns the one that's greater.
+
+ghci> min 9 10
+9
+ghci> max 100 101
+101 
+-}
+
+
+--Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all.
+
+
