@@ -8,7 +8,7 @@ b = [4,5,6]
 
 
 {-ghci> h++' ':r
-"hello raghav"-}
+"Hello Raghav"-}
 
 
 {-
@@ -43,3 +43,82 @@ False
 ghci> null []
 True
 -}
+
+
+{-
+reverse reverses a list.
+
+ghci> reverse [5,4,3,2,1]
+[1,2,3,4,5]
+-}
+
+
+{-
+concat concatenates two lists.
+
+ghci> concat [1,2,3] [4,5,6]
+[1,2,3,4,5,6]
+-}
+
+
+{-
+take takes number and a list. It extracts that many elements from the beginning of the list. Watch.
+
+ghci> take 3 [5,4,3,2,1]
+[5,4,3]
+ghci> take 1 [3,9,3]
+[3]
+ghci> take 5 [1,2]
+[1,2]
+ghci> take 0 [6,6,6]
+[]
+
+
+drop works in a similar way, only it drops the number of elements from the beginning of a list.
+
+ghci> drop 3 [8,4,2,1,5,6]
+[1,5,6]
+ghci> drop 0 [1,2,3,4]
+[1,2,3,4]
+ghci> drop 100 [1,2,3,4]
+[] 
+-}
+
+
+{-
+maximum takes a list of stuff that can be put in some kind of order and returns the biggest element.
+
+minimum returns the smallest.
+
+ghci> minimum [8,4,2,1,5,6]
+1
+ghci> maximum [1,9,2,3,4]
+9 
+-}
+
+
+{-
+sum takes a list of numbers and returns their sum.
+
+product takes a list of numbers and returns their product.
+
+ghci> sum [5,2,1,6,3,2,5,7]
+31
+ghci> product [6,2,1,2]
+24
+ghci> product [1,2,5,6,7,9,2,0]
+0
+-}
+
+
+{-
+elem takes a thing and a list of things and tells us if that thing is an element of the list. It's usually called as an infix function because it's easier to read that way.
+
+ghci> 4 `elem` [3,4,5,6]
+True
+ghci> 10 `elem` [3,4,5,6]
+False
+-}
+
+
+-- http://learnyouahaskell.com/modules#data-list
