@@ -33,3 +33,13 @@ ghci> :t 4 == 5
 --Efficiency int>integer
 
 -- Float is a real floating point with single precision.
+-- Double is a real floating point with double the precision!
+
+--Bool is a boolean type. It can have only two values: True and False.
+
+--Char represents a character. It's denoted by single quotes: '*char' .
+--A list of characters is a string. "*string"==['char'] .
+
+--Tuples are types but they are dependent on their length as well as the types of their components, 
+--so there is theoretically an infinite number of tuple types
+--The empty tuple () is also a type which can only have a single value: ()
