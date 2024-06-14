@@ -40,8 +40,18 @@ ghci> zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
 [(5,"im"),(3,"a"),(2,"turtle")]
 
 --Because Haskell is lazy, we can zip finite lists with infinite lists:
-ghci> zip [5,3,2,6,2,7,2,5,4,6,6] ["im","a","turtle"]
-[(5,"im"),(3,"a"),(2,"turtle")]
+ghci> zip [1..] ["apple", "orange", "cherry", "mango"]
+[(1,"apple"),(2,"orange"),(3,"cherry"),(4,"mango")]
+
+
+--which right triangle that has integers for all sides and all sides equal to or smaller than 10 has a perimeter of 24? First, let's try generating all triangles with sides equal to or smaller than 10
+
+triangles = [ (a,b,c) | c <- [1..10], b <- [1..10], a <- [1..10] ] 
+rightTriangles = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2]
+rightTriangles' = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
+
+ghci> [ (x,y,z) | x<-[1..10], y<-[1..x], z<-[1..y], x*x==y*y+z*z, x+y+z==24]
+[(10,8,6)]
 
 -}
 
