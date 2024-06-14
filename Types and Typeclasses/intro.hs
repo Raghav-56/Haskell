@@ -1,0 +1,35 @@
+-- Haskell has a `static type system`: The type of every expression is known at compile time, safer code!
+--Everything in Haskell has a type(lable of category).
+--Type inference: we don't have to explicitly write out the types of our functions and expressions to get things done. It can infer that on its own
+
+
+-- doing :t on an expression prints out the expression followed by :: and its type.
+{-
+ghci> :t 'a'
+'a' :: Char
+ghci> :t True
+True :: Bool
+ghci> :t "HELLO!"
+"HELLO!" :: [Char]
+ghci> :t (True, 'a')
+(True, 'a') :: (Bool, Char)
+ghci> :t 4 == 5
+4 == 5 :: Bool
+-}
+
+-- :: is read as "has type of".
+
+-- Functions also have types(Functions are expressions too).
+--When writing our own functions, we can give them an explicit type declaration. good practice except when writing very short functions.
+
+
+--The parameters are separated with -> and there's no special distinction between the parameters and the return type.
+--The return type is the last item in the declaration and the parameters are the first.
+
+
+
+--Int stands for integer. It's used for whole numbers. Int is bounded, which means that it has a minimum and a maximum value.
+--Integer stands for, er … also integer. It's not bounded so it can be used to represent really really big numbers.
+--Efficiency int>integer
+
+-- Float is a real floating point with single precision.
