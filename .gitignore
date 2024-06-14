@@ -1,0 +1,6 @@
+# Ignore all PDF files
+*.pdf
+
+# Ignore all PowerShell script files
+*.ps1
+
