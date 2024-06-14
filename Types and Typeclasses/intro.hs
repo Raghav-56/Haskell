@@ -1,3 +1,4 @@
+import qualified Control.Applicative as eg
 -- Haskell has a `static type system`: The type of every expression is known at compile time, safer code!
 --Everything in Haskell has a type(lable of category).
 --Type inference: we don't have to explicitly write out the types of our functions and expressions to get things done. It can infer that on its own
@@ -43,3 +44,16 @@ ghci> :t 4 == 5
 --Tuples are types but they are dependent on their length as well as the types of their components, 
 --so there is theoretically an infinite number of tuple types
 --The empty tuple () is also a type which can only have a single value: ()
+
+
+--eg.
+
+factorial :: Integer -> Integer
+factorial n = product [1..n]
+
+circumference :: Float -> Float
+circumference r = 2 * pi * r
+--ghci> circumference 4.0
+--25.132742
+
+
