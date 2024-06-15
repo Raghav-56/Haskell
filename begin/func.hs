@@ -24,6 +24,10 @@ prefix functions: In most imperative languages functions are called by writing t
 ghci> succ 8
 9 
 The succ function takes anything that has a defined successor and returns that successor.
+
+ghci> pred 8
+7
+The pred function takes anything that has a defined predecessor and returns that predecessor.
 -}
 
 
@@ -57,4 +61,35 @@ ghci> 5 >= 2
 True
 ghci> 5 `compare` 3
 GT
+
+
+-- show: takes a value whose type is a member of Show and presents it to us as a string.
+
+ghci> show 3
+"3"
+ghci> show 5.334
+"5.334"
+ghci> show True
+"True"
+
+
+-- read (opposite of Show): takes a string and returns a type which is a member of Read.
+
+ghci> read "True" || False
+True
+ghci> read "8.2" + 3.8
+12.0
+ghci> read "5" - 2
+3
+ghci> read "[1,2,3,4]" ++ [3]
+[1,2,3,4,3]
+
+
+
+
+
+
 -}
+
+
+
