@@ -16,7 +16,8 @@
 --We can read the previous type declaration like this: the equality function takes any two values that are of the same type and returns a Bool. The type of those two values must be a member of the Eq class (this was the class constraint).
 
 
---The Eq: typeclass provides an interface for testing for equality. Any type where it makes sense to test for equality between two values of that type should be a member of the Eq class. All standard Haskell types except for IO (the type for dealing with input and output) and functions are a part of the Eq typeclass.
+--The Eq: typeclass provides an interface for testing for equality. Any type where it makes sense to test for equality between two values of that type should be a member of the Eq class.
+--All standard Haskell types except for IO (the type for dealing with input and output) and functions are a part of the Eq typeclass.
 
 
 --Ord: is for types that have an ordering.
@@ -32,7 +33,7 @@
 
 --Members of Show: can be presented as strings.
 --All types covered so far except for functions are a part of Show. 
---The most used function that deals with the Show typeclass, is show. It takes a value whose type is a member of Show and presents it to us as a string.
+--show: takes a value whose type is a member of Show and presents it to us as a string.
 --ghci> :t show
 --show :: Show a => a -> String
 
@@ -43,7 +44,7 @@
 
 
 {-
- Most expressions are such that the compiler can infer what their type is by itself. 
+Most expressions are such that the compiler can infer what their type is by itself. 
 But sometimes, the compiler doesn't know whether to return a value of type Int or Float for an expression like read "5". 
 To see what the type is, Haskell would have to actually evaluate read "5". 
 But since Haskell is a statically typed language, it has to know all the types before the code is compiled (or in the case of GHCI, evaluated). 

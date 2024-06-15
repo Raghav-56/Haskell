@@ -1,4 +1,3 @@
-import qualified Control.Applicative as eg
 -- Haskell has a `static type system`: The type of every expression is known at compile time, safer code!
 --Everything in Haskell has a type(lable of category).
 --Types are written in capital case
