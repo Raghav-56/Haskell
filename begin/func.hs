@@ -40,3 +40,21 @@ ghci> max 100 101
 --Function application (calling a function by putting a space after it and then typing out the parameters) has the highest precedence of them all.
 
 
+
+
+--------------------------------------------------------------------------------
+
+
+{-
+-- `compare`: The compare function takes two Ord members of the same type and returns an ordering. 
+--            Ordering is a type that can be GT, LT or EQ, meaning greater than, lesser than and equal, respectively
+
+ghci> "Abrakadabra" < "Zebra"
+True
+ghci> "Abrakadabra" `compare` "Zebra"
+LT
+ghci> 5 >= 2
+True
+ghci> 5 `compare` 3
+GT
+-}
