@@ -1,6 +1,12 @@
 # Ignore all PDF files
 *.pdf
 
-# Ignore all PowerShell script files
+# Ignore all PowerShell and batch script files
 *.ps1
 
+*.bat
+
+# these(c,cpp)  are only for testing purposes
+test.cpp
+
+D:\Programming\Haskell\Start(File&VS-code).bat

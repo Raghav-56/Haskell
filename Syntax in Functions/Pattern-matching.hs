@@ -65,6 +65,15 @@ sum' (x:xs) = x + sum' xs
 -- patterns: handy way of breaking something up according to a pattern and binding it to names whilst still keeping a reference to the whole thing.
 -- by putting a name and an @ in front of a pattern, eg. xs@(x:y:ys)
 --we use patterns to avoid repeating ourselves when matching against a bigger pattern.
+
+
+{-
+you can't use ++ in pattern matches. 
+If you tried to pattern match against (xs ++ ys), what would be in the first and what would be in the second list? It doesn't make much sense. 
+It would make sense to match stuff against (xs ++ [x,y,z]) or just (xs ++ [x]), but because of the nature of lists, you can't do that.
+-}
+
+
 -- patterns are a way of making sure a value conforms to some form and deconstructing it
 -- guards are a way of testing whether some property of a value (or several of them) are true or false.
 
