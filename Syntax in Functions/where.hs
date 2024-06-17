@@ -56,12 +56,8 @@ calcBmis xs = [bmi w h | (w, h) <- xs]
 --It's a common idiom to make a function and define some helper function in its where clause and then to give those functions helper functions as well, each with its own where clause.
 
 
-
-
-
-
-
-
+--Where bindings are a syntactic construct that let you bind to variables at the end of a function and the whole function can see them, including all the guards.
+--Let bindings let you bind to variables anywhere and are expressions themselves, but are very local, so they don't span across guards.
 
 
 
