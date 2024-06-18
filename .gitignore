@@ -7,6 +7,8 @@
 *.bat
 
 # these(c,cpp)  are only for testing purposes
-test.cpp
+#*.c
+#*.cpp
+#not anymore, they are for demonstration
 
 D:\Programming\Haskell\Start(File&VS-code).bat
