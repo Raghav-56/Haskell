@@ -11,4 +11,9 @@
 #*.cpp
 #not anymore, they are for demonstration
 
-D:\Programming\Haskell\Start(File&VS-code).bat
+#D:\Programming\Haskell\Start(File&VS-code).bat
+
+
+# vs code 
+.vscode
+*.json
