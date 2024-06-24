@@ -2,7 +2,7 @@
 -- guards are a way of testing whether some property of a value (or several of them) are true or false.
 
 
--- similar to if statements
+-- similar to if statements, or switch to be exact
 
 --guards are more readable when you have several conditions and they play really nicely with patterns.
 
@@ -14,7 +14,7 @@ bmiTell bmi
     | bmi <= 30.0 = "You're fat! Lose some weight, fatty!"
     | otherwise   = "You're a whale, congratulations!"
 
---Guards are indicated by pipes(|) that follow a function's name and its parameters.
+--Guards are indicated by pipes(|) that follow a function's name and its parameters and are followed by some boolean logic statement followed by = result.
 -- Usually, they're indented a bit to the right and lined up. 
 
 --A guard is basically a boolean expression. If it evaluates to True, then the corresponding function body is used. If it evaluates to False, checking drops through to the next guard and so on.
@@ -24,6 +24,7 @@ bmiTell bmi
 --This is very similar to patterns, only they check if the input satisfies a pattern but guards check for boolean conditions.
 
 --If all the guards of a function evaluate to False (and we haven't provided an otherwise catch-all guard), evaluation falls through to the next pattern. That's how patterns and guards play nicely together. 
+-- a pattern can have multiple guards
 --If no suitable guards or patterns are found, an error is thrown.
 
 
@@ -43,7 +44,7 @@ max' a b
     | a > b     = a
     | otherwise = b
 --Guards can also be written inline, eg.:
---max' a b | a > b = a | otherwise = b
+max'' a b | a > b = a | otherwise = b
 
 
 --compare function:

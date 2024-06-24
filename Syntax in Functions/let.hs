@@ -15,10 +15,10 @@ cylinder r h =
 --The form is let <bindings> in <expression>. The names that you define in the let part are accessible to the expression after the in part.
 
 
---let puts the bindings first and the expression that uses them later whereas where is the other way around.
+--let... in... puts the bindings first and the expression that uses them later whereas where is the other way around.
 --The difference is that let bindings are expressions themselves. where bindings are just syntactic constructs.
 
--- reminder: if else statement is an expression and you can cram it in almost anywhere, if.. then .. else ..
+-- //reminder: if else statement is an expression and you can cram it in almost anywhere, if.. then .. else ..
 
 
 --let bindings can also be used to introduce functions in a local scope:

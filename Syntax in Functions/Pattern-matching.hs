@@ -46,8 +46,8 @@ third (_, _, z) = z
 
 --you can also pattern match in list comprehensions.
 {-
-ghci> let xs = [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]
-ghci> [a+b | (a,b) <- xs]
+* ghci> let xs = [(1,3), (4,3), (2,4), (5,3), (5,6), (3,1)]
+* ghci> [a+b | (a,b) <- xs]
 [4,7,6,8,11,4]
 -}
 
@@ -89,6 +89,14 @@ sum' (x:xs) = x + sum' xs
 -- patterns:(notice s) handy way of breaking something up according to a pattern and binding it to names whilst still keeping a reference to the whole thing.
 -- by putting a name and an @ in front of a pattern, eg. xs@(x:y:ys)
 --we use patterns to avoid repeating ourselves when matching against a bigger pattern, when we have to use the whole thing again in the function body.
+--eg.
+capital :: String -> String
+capital "" = "Empty string, whoops!"
+capital all@(x:xs) = "The first letter of " ++ all ++ " is " ++ [x]
+{-
+* ghci> capital "Dracula"
+"The first letter of Dracula is D"
+-}
 
 
 --you can't use ++ in pattern matches. 

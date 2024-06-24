@@ -11,6 +11,7 @@ bmiTell weight height
           skinny = 18.5
           normal = 25.0
           fat = 30.0
+-- Such Indentation in where is part of Syntax here and compulsory.
 
 --We put the keyword where after the guards (usually it's best to indent it as much as the pipes are indented) 
 --and then we define several names or functions.
@@ -35,6 +36,7 @@ bmiTell' weight height
           (skinny, normal, fat) = (18.5, 25.0, 30.0)
 -- single w and h s bmi func inside where has no parameters
 
+
 --function where we get a first and a last name and give someone back their initials.
 initials :: String -> String -> String
 initials firstname lastname = [f] ++ ". " ++ [l] ++ "."
@@ -54,6 +56,24 @@ calcBmis xs = [bmi w h | (w, h) <- xs]
 
 --where bindings can also be nested. 
 --It's a common idiom to make a function and define some helper function in its where clause and then to give those functions helper functions as well, each with its own where clause.
+--eg
+
+-- A function to calculate the sum of squares of three numbers
+sumOfSquaresThree :: Int -> Int -> Int -> Int
+sumOfSquaresThree x y z = sumOfSquares x y + square z
+  where
+    -- Reusing the sumOfSquares function from above
+    sumOfSquares :: Int -> Int -> Int
+    sumOfSquares a b = square a + square b
+      where
+        -- Nested helper function to calculate the square of a number
+        square :: Int -> Int
+        square n = n * n
+    -- Helper function to calculate the square of a number
+    square :: Int -> Int
+    square n = n * n
+
+
 
 
 --Where bindings are a syntactic construct that let you bind to variables at the end of a function and the whole function can see them, including all the guards.

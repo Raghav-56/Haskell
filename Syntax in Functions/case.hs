@@ -7,29 +7,30 @@
 
 --the syntax for case expressions is pretty simple:
 {-}
-case expression of pattern -> result
-                   pattern -> result
-                   pattern -> result
-                   ...
+case expression of  pattern -> result
+                    pattern -> result
+                    pattern -> result
+                    ...
 -}                
 head' :: [a] -> a
-head' xs = case xs of [] -> error "No head for empty lists!"
-                      (x:_) -> x
+head' xs = case xs of   [] -> error "No head for empty lists!"
+                        (x:_) -> x
 
+--the first pattern that matches the expression is used. If it falls through the whole case expression and no suitable pattern is found, a runtime error occurs.
 
 --Whereas pattern matching on function parameters can only be done when defining functions, case expressions can be used pretty much anywhere.
 
 describeList :: [a] -> String
-describeList xs = "The list is " ++ case xs of [] -> "empty."
-                                               [x] -> "a singleton list." 
-                                               xs -> "a longer list."
+describeList xs = "The list is " ++ case xs of  [] -> "empty."
+                                                [x] -> "a singleton list." 
+                                                xs -> "a longer list."
 --useful for pattern matching against something in the middle of an expression. 
 
 describeList' :: [a] -> String
 describeList' xs = "The list is " ++ what xs
-    where what [] = "empty."
-          what [x] = "a singleton list."
-          what xs = "a longer list."
+    where   what [] = "empty."
+            what [x] = "a singleton list."
+            what xs = "a longer list."
 
 
 
