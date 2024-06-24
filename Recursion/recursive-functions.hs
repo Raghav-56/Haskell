@@ -33,10 +33,10 @@ reverse' (x:xs) = reverse' xs ++ [x]
 repeat' :: a -> [a]
 repeat' x = x:repeat' x
 
--- replicate 2:
+{- --// replicate 2:
 
-replicate'' :: Int -> a -> [a]
-replicate'' n a = take n (repeat' a)
+//replicate'' :: Int -> a -> [a]
+//replicate'' n a = take n (repeat' a) -}
 
 
 --zip: takes two lists and zips them together.

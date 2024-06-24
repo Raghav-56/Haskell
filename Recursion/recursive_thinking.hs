@@ -1,4 +1,5 @@
--- you define an edge case and then you define a function that does something between some element and the function applied to the rest. 
+-- you define an edge case 
+--and then you define a function/ pattern that does something between some element and the function applied to the rest. 
 --It doesn't matter if it's a list, a tree or any other data structure. 
 
 --A sum is the first element of a list plus the sum of the rest of the list. 
@@ -15,6 +16,7 @@
 --Often the edge case value turns out to be an identity. 
 --The identity for Addition is 0 because if you Add something by 1, you get that something back.
 --The identity for Multiplication is 1 because if you multiply something by 1, you get that something back.
+
 
 {-
 So when trying to think of a recursive way to solve a problem, 

@@ -5,6 +5,8 @@
 We say that F(0) = 0 and F(1) = 1, meaning that the 0th and 1st fibonacci numbers are 0 and 1, respectively. 
 Then we say that for any other natural number, that fibonacci number is the sum of the previous two fibonacci numbers. 
 So F(n) = F(n-1) + F(n-2).
+-}
+{-
 
 --Having an element or two in a recursion definition defined non-recursively (like F(0) and F(1) here) is also called the edge condition 
 and is important if you want your recursive function to terminate.

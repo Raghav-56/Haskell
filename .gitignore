@@ -17,3 +17,7 @@
 # vs code 
 .vscode
 *.json
+
+#images
+.png
+.jpg
