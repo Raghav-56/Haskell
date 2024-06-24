@@ -1,20 +1,20 @@
 -- Haskell has a `static type system`: The type of every expression is known at compile time, safer code!
---Everything in Haskell has a type(lable of category).
+--Everything in Haskell has a type(label of category).
 --Types are written in capital case
 --Type inference: we don't have to explicitly write out the types of our functions and expressions to get things done. It can infer that on its own
 
 
 -- doing :t on an expression prints out the expression followed by :: and its type.
 {-
-ghci> :t 'a'
+* ghci> :t 'a'
 'a' :: Char
-ghci> :t True
+* ghci> :t True
 True :: Bool
-ghci> :t "HELLO!"
+* ghci> :t "HELLO!"
 "HELLO!" :: [Char]
-ghci> :t (True, 'a')
+* ghci> :t (True, 'a')
 (True, 'a') :: (Bool, Char)
-ghci> :t 4 == 5
+* ghci> :t 4 == 5
 4 == 5 :: Bool
 -}
 
@@ -53,7 +53,7 @@ factorial n = product [1..n]
 
 circumference :: Float -> Float
 circumference r = 2 * pi * r
---ghci> circumference 4.0
+-- * ghci> circumference 4.0
 --25.132742
 
 

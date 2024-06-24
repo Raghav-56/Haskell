@@ -2,7 +2,7 @@
 
 -- In most imperative languages functions are called by writing the function name and then writing its parameters in parentheses, usually separated by commas. In Haskell, functions are called by writing the function name, a space and the parameters, separated by spaces( ).
 {-
-infix function: can be called by sandwiching it between arguments (usually numbers) x infix y. For calling as prefix we have to enclose it between brackets- (infix) x y.
+infix function: can be called by sandwiching it between arguments (usually numbers) x infix y. For calling as prefix we have to enclose it between brackets- (infix) x y. includes all functions comprised only of special characters
 prefix functions: can be called by function name then arguments prefix x y. For calling as infix we have to enclose it between backticks- x `prefix` y.
 -}
 
@@ -74,6 +74,7 @@ True
 * ghci> 5 `compare` 3
 GT
 -}
+
 
 
 -- show: takes a value whose type is a member of Show and presents it to us as a string.
