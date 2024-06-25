@@ -6,7 +6,7 @@ applyTwice :: (a -> a) -> a -> a
 applyTwice f x = f (f x)
 
 {- type declaration: 
-Before, we didn't need parentheses because -> is naturally right-associative. However, here, they're mandatory. 
+--! Before, we didn't need parentheses because -> is naturally right-associative. However, here, they're mandatory. 
 They indicate that the first parameter is a function that takes something and returns that same thing. The second parameter is something of that type also and the return value is also of the same type. 
 Not said in curried way here, this function takes two parameters and returns one thing. 
 The first parameter is a function (of type a -> a) and the second is that same a. 
@@ -23,19 +23,33 @@ zipWith' _ [] _ = []
 zipWith' _ _ [] = []
 zipWith' f (x:xs) [y,ys] = f x y : zipWith' f xs [ys]
 
-{-ghci> zipWith' (zipWith' (*)) [[1,2,3],[3,5,6],[2,3,4]] [[3,2,2],[3,4,5],[5,4,3]]
-[[3,4,6],[9,20,30],[10,12,12]]-}
+{-
+* ghci> zipWith' max [6,3,2,1] [7,3,1,5]
+[7,3,2,5]
+* ghci> zipWith' (++) ["foo ", "bar ", "baz "] ["fighters", "hoppers", "aldrin"]
+["foo fighters","bar hoppers","baz aldrin"]
+* ghci> zipWith' (*) (replicate 5 2) [1..]
+[2,4,6,8,10]
+* ghci> zipWith' (zipWith' (*)) [[1,2,3],[3,5,6],[2,3,4]] [[3,2,2],[3,4,5],[5,4,3]]
+[[3,4,6],[9,20,30],[10,12,12]]
+-}
 
 
 --Flip: takes a function and returns a function that is like our original function, only the first two arguments are flipped.
 flip' :: (a -> b -> c) -> b -> a -> c
 flip'  f x y = f y x
-
-
-
-
 --or f = g
 --      where g y x = f x y
+
+{-
+* ghci> flip' zip [1,2,3,4,5] "hello"
+[('h',1),('e',2),('l',3),('l',4),('o',5)]
+* ghci> zipWith (flip' div) [2,2..] [10,8,6,4,2]
+[5,4,3,2,1]
+-}
+
+
+
 
 
 
