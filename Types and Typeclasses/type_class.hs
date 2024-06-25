@@ -118,7 +118,7 @@ False
 
 --takes Integral gives Num
 fromIntegral :: (Num b, Integral a) => a -> b
--- // fromIntegral a = a
+-- fromIntegral a = a
 
 -- length :: [a] -> Int   --not, length :: (Num b) =>  [a] -> b   (historical reasons)
 
