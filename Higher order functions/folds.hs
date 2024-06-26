@@ -25,11 +25,51 @@ elem x = foldl (\acc y-> (y == x) || acc) False
 
 map' :: (a -> b) -> [a] -> [b]
 map' f = foldr (\x acc -> f x : acc) []
+-- much less expensive than foldl, map' f = foldl (\acc x -> acc ++ [f x]) []
 
 
+-- If you reverse a list, you can do a right fold on it just like you would have done a left fold and vice versa. 
+--Sometimes you don't even have to do that, eg sum function. 
+--Right folds work on infinite lists, whereas left ones don't! 
+--If you take an infinite list at some point and you fold it up from the right, you'll eventually reach the beginning of the list. If you take an infinite list at a point and you try to fold it up from the left, you'll never reach an end!
 
 
+-- Folds can be used to implement any function where you traverse a list once, element by element, and then return something based on that. 
+--folds, along with maps and filters, some of the most useful types of functions in functional programming.
 
+
+--The foldl1 and foldr1 functions work much like foldl and foldr, only you don't need to provide them with an explicit starting value. 
+--They assume the first (or last) element of the list to be the starting value and then start the fold with the element next to it.
+--eg. 
+maximum' :: (Ord a) => [a] -> a  
+maximum' = foldr1 (\x acc -> if x > acc then x else acc)  
+
+reverse' :: [a] -> [a]  
+reverse' = foldl (\acc x -> x : acc) []  
+
+product' :: (Num a) => [a] -> a  
+product' = foldr1 (*)  
+
+filter' :: (a -> Bool) -> [a] -> [a]  
+filter' p = foldr (\x acc -> if p x then x : acc else acc) []  
+
+head' :: [a] -> a
+head' = foldr1 (\x _ -> x)  
+
+last' :: [a] -> a
+last' = foldl1 (\_ x -> x) 
+
+
+-- doing a left fold over the list [3,4,5,6] with g as the binary function and z as the accumulator is the equivalent of g (g (g (g z 3) 4) 5) 6.
+-- => flip (:) (flip (:) (flip (:) (flip (:) [] 3) 4) 5) 6
+
+--scanl and scanr are like foldl and foldr, only they report all the intermediate accumulator states in the form of a list. 
+-- scanl1 and scanr1, are analogous to foldl1 and foldr1.
+
+--How many elements does it take for the sum of the roots of all natural numbers to exceed 1000? and whats the progression like?
+sqrtSums :: Int  
+sqrtSums = length (takeWhile (<1000) (scanl1 (+) (map sqrt [1..]))) + 1 
+--We use takeWhile here instead of filter because filter doesn't work on infinite lists. Even though we know the list is ascending, filter doesn't, so we use takeWhile to cut the scanl off at the first occurrence of a sum greater than 1000. 
 
 
 
