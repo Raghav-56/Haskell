@@ -1,4 +1,3 @@
-import Control.Applicative (liftA)
 -- Map takes a function and a list and applies that function to every element in the list, producing a new list. 
 map' :: (a -> b) -> [a] -> [b]
 map' _ [] = []
@@ -33,6 +32,9 @@ ghci> filter (`elem` ['A'..'Z']) "i lauGh At You BecAuse u r aLL the Same"
 "GAYBALLS"
 -}
 
+notNullLst :: [[a]] -> [[a]]
+notNullLst = filter (not . null)
+
 
 -- All of this could also be achieved with list comprehensions by the use of predicates. 
 --The filter equivalent of applying several predicates in a list comprehension is either filtering something several times or joining the predicates with the logical && function.
@@ -53,9 +55,8 @@ largestDivisible = head (filter p [100000,99999..])
 
 --The sum of all odd squares that are smaller than 10,000
 sum' :: (Integral a) => a
-sum' = sum (takeWhile (<10000) lio)
-    where   lio = filter odd li
-            li = map (^2) [1..]
+sum' = sum (takeWhile (<10000) li)
+    where   li = map (^2) [1,3..] --can use odd x
 
 sum'' :: Integer
 sum'' = sum (takeWhile (<10000) lio)
@@ -71,7 +72,7 @@ sum'' = sum (takeWhile (<10000) lio)
 chain :: (Integral a) => a -> [a]
 chain 1 = [1]
 chain x 
-    | even x = x: chain (x `div` 2)
+    | even x = x: chain fromIntegral(x `div` 2)
     | odd x = x: chain (x*3+1)
 
 -- for all starting numbers between 1 and 100, how many chains have a length greater than 15?
@@ -79,8 +80,9 @@ chain x
 numLongChains :: Int
 numLongChains = length ali
     where   ali = filter isLong li
-            isLong xl = length xl >15
+            isLong = (15 <) . length -- (f . g) x = f (g x) --// isLong xl = length xl >15
             li = map chain [1..100]
+
 -- remember fromIntegral
 intnch15 :: (Num a) => a
 intnch15 = fromIntegral numLongChains
@@ -90,7 +92,9 @@ intnch15 = fromIntegral numLongChains
 multByN :: (Num a, Enum a) => [a -> a]
 --multByN = map (\n -> (*) n) [0..]
 multByN = map (*) [0..]
+
 -- == [(0*),(1*),(2*),(3*),(4*),(5*)...}]
+
 {-ghci> let listOfFuns = map (*) [0..]
 ghci> (listOfFuns !! 4) 5 -- index 4
 20-}

@@ -3,7 +3,7 @@
 --folds are sort of like the map function, only they reduce the list to some single value.
 
 -- A fold takes a binary function, a starting value (the accumulator) and a list to fold up. 
---The binary function itself takes two parameters. The binary function is called with the accumulator and the first (or last) element and produces a new accumulator. Then, the binary function is called again with the new accumulator and the now new first (or last) element, and so on. 
+--The binary function itself takes two parameters. It is called with the accumulator and the first (or last) element and produces a new accumulator. Then, the binary function is called again with the new accumulator and the now new first (or last) element, and so on. 
 --Once we've walked over the whole list, only the accumulator remains, which is what we've reduced the list to.
 
 
@@ -46,6 +46,8 @@ maximum' = foldr1 (\x acc -> if x > acc then x else acc)
 
 reverse' :: [a] -> [a]  
 reverse' = foldl (\acc x -> x : acc) []  
+reverse'' :: [a] -> [a]
+reverse'' = foldl (flip(:)) []
 
 product' :: (Num a) => [a] -> a  
 product' = foldr1 (*)  
@@ -65,6 +67,17 @@ last' = foldl1 (\_ x -> x)
 
 --scanl and scanr are like foldl and foldr, only they report all the intermediate accumulator states in the form of a list. 
 -- scanl1 and scanr1, are analogous to foldl1 and foldr1.
+-- When using a scanl, the final result will be in the last element of the resulting list while a scanr will place the result in the head.
+{-
+ghci> scanl (+) 0 [3,5,2,1]  
+[0,3,8,10,11]  
+ghci> scanr (+) 0 [3,5,2,1]  
+[11,8,3,1,0] 
+ghci> scanl1 (\acc x -> if x > acc then x else acc) [3,4,5,3,7,9,2,1]  
+[3,4,5,5,7,9,9,9]  
+ghci> scanl (flip (:)) [] [3,2,1]  
+[[],[3],[2,3],[1,2,3]]
+-}
 
 --How many elements does it take for the sum of the roots of all natural numbers to exceed 1000? and whats the progression like?
 sqrtSums :: Int  

@@ -1,8 +1,8 @@
 -- Lambdas are anonymous functions used because we need some functions only once. Normally, we make a lambda with the sole purpose of passing it to a higher-order function.
--- To make a lambda, we write a \ and write the parameters, separated by spaces. After that comes -> and then the function body.
+-- To make a lambda, we write- (\the parameters, separated by spaces -> the function body).
 -- We usually surround them by parentheses, because otherwise they extend all the way to the right.
 
-
+-- check Maps&filters.hs .
 chain :: (Integral a) => a -> [a]
 chain 1 = [1]
 chain x 
@@ -13,6 +13,8 @@ numLongChains :: Int
 numLongChains = length (filter (\xs -> length xs > 15) (map chain [1..100]))
 
 -- ! Lambdas are expressions
+
+--People who are not well acquainted with how currying and partial application works often use lambdas where they don't need to. (\x -> x _) == _
 
 -- like normal functions, you can pattern match in lambdas. The only difference is that you can't define several patterns for one parameter, like making a [] and a (x:xs) pattern for the same parameter and then having values fall through, or using guards.
 -- If a pattern matching fails in a lambda, a runtime error occurs!
