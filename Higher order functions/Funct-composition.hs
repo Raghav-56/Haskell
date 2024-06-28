@@ -2,7 +2,7 @@
 -- ? which == f $ g  x
 
 -- (.) :: (b -> c) -> (a -> b) -> a -> c  
---f . g = \x -> f (g x) 
+-- f . g = \x -> f (g x) 
 -- ? == f $ g  
 -- ! no  f . g x == \x -> f (g x) and f $ g x == f (g x)
 -- !  (f . g) x == f $ g x = f(g(x))
@@ -32,16 +32,19 @@ fn = ceiling . negate . tan . cos . max 50
 
 
 -- sum of all odd squares that are smaller than 10,000
+--solution when put into a function
 oddSquareSum :: Integer  
 oddSquareSum = sum (takeWhile (<10000) (filter odd (map (^2) [1..]))) 
 
+-- function composition
 oddSquareSum' :: Integer
 oddSquareSum' = sum . takeWhile (<10000) . filter odd . map (^2) $ [1..] 
 
+--Standard with best readability
 oddSquareSum'' :: Integer
 oddSquareSum'' = 
     let oddSquares = filter odd $ map (^2) [1..]  
-        belowLimit = takeWhile (<10000) oddSquares  
+        belowLimit = takeWhile (<10000) oddSquares
     in  sum belowLimit  
 
 

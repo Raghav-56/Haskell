@@ -72,7 +72,7 @@ sum'' = sum (takeWhile (<10000) lio)
 chain :: (Integral a) => a -> [a]
 chain 1 = [1]
 chain x 
-    | even x = x: chain fromIntegral(x `div` 2)
+    | even x = x: chain (x `div` 2)
     | odd x = x: chain (x*3+1)
 
 -- for all starting numbers between 1 and 100, how many chains have a length greater than 15?
