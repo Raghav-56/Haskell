@@ -1,4 +1,6 @@
 --replicate: takes an Int and some element and returns a list that has several repetitions of the same element.
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use foldr" #-}
 
 replicate' :: (Num i, Ord i) => i -> a -> [a]
 replicate' n x
@@ -54,6 +56,13 @@ elem' _ [] = False
 elem' a (x:xs) 
     | a == x = True
     | otherwise = elem' a xs
+
+
+------------------------
+
+concat' :: [[a]] -> [a]
+concat' [] = []
+concat' (xs:xss) = xs ++ concat' xss
 
 
 
