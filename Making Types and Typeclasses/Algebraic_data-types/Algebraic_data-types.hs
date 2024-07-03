@@ -35,7 +35,7 @@ Rectangle :: Float -> Float -> Float -> Float -> Shape
 
 surface :: Shape -> Float  
 surface (Circle _ _ r) = pi * r ^ 2  
-surface (Rectangle x1 y1 x2 y2) = (abs $ x2 - x1) * (abs $ y2 - y1)  
+surface (Rectangle x1 y1 x2 y2) = abs (x2 - x1) * abs (y2 - y1)  
 
 -- Circle is a function and Shape a type
 -- like True is a function and Book a type
@@ -48,7 +48,7 @@ surface (Rectangle x1 y1 x2 y2) = (abs $ x2 - x1) * (abs $ y2 - y1)
 
 -- !  when we try to print a value out in the prompt, Haskell first runs the show function to get the string representation of our value and then it prints that out to the terminal. 
 
-data Shape' = Circle Float Float Float | Rectangle Float Float Float Float deriving (Show)  
+data Shape' = Circle' Float Float Float | Rectangle' Float Float Float Float deriving (Show)  
 
 -- if we add deriving (Show) at the end of a data declaration, Haskell automatically makes that type part of the Show typeclass. 
 
@@ -61,27 +61,27 @@ ghci> map (Circle 10 20) [4,5,6,6]
 -}
 
 data Point = Point Float Float deriving (Show)  
-data Shape'' = Circle Point Float | Rectangle Point Point deriving (Show) 
+data Shape'' = Circle'' Point Float | Rectangle'' Point Point deriving (Show) 
 
 --when defining a point, we used the same name for the data type and the value constructor. This has no special meaning, although it's common to use the same name as the type if there's only one value constructor.
 
-surface' :: Shape -> Float  
-surface' (Circle _ r) = pi * r ^ 2  
-surface' (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)  
+surface' :: Shape'' -> Float  
+surface' (Circle'' _ r) = pi * r ^ 2  
+surface' (Rectangle'' (Point x1 y1) (Point x2 y2)) = abs (x2 - x1) * abs (y2 - y1)  
 
 
 --a function that nudges a shape. takes a shape, the amount to move it on the x axis and the amount to move it on the y axis and then returns a new shape that has the same dimensions, only it's located somewhere else.
-nudge :: Shape -> Float -> Float -> Shape  
-nudge (Circle (Point x y) r) a b = Circle (Point (x+a) (y+b)) r  
-nudge (Rectangle (Point x1 y1) (Point x2 y2)) a b = Rectangle (Point (x1+a) (y1+b)) (Point (x2+a) (y2+b))  
+nudge :: Shape'' -> Float -> Float -> Shape''  
+nudge (Circle'' (Point x y) r) a b = Circle'' (Point (x+a) (y+b)) r  
+nudge (Rectangle'' (Point x1 y1) (Point x2 y2)) a b = Rectangle'' (Point (x1+a) (y1+b)) (Point (x2+a) (y2+b))  
 
 --If we don't want to deal directly with points, we can make some auxiliary functions that create shapes of some size at the zero coordinates and then nudge those.
 
-baseCircle :: Float -> Shape  
-baseCircle r = Circle (Point 0 0) r  
+baseCircle :: Float -> Shape''  
+baseCircle = Circle'' (Point 0 0) 
 
-baseRect :: Float -> Float -> Shape  
-baseRect width height = Rectangle (Point 0 0) (Point width height) 
+baseRect :: Float -> Float -> Shape'' 
+baseRect width height = Rectangle'' (Point 0 0) (Point width height) 
 
 
 

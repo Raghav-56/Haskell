@@ -1,0 +1,1 @@
+--A value constructor can take some values parameters and then produce a new value. 
