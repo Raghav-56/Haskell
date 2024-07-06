@@ -38,8 +38,8 @@ zipWith' f (x:xs) [y,ys] = f x y : zipWith' f xs [ys]
 --Flip: takes a function and returns a function that is like our original function, only the first two arguments are flipped.
 flip' :: (a -> b -> c) -> b -> a -> c
 flip'  f x y = f y x
---or f = g
---      where g y x = f x y
+-- * f = g
+-- *     where g y x = f x y
 
 {-
 * ghci> flip' zip [1,2,3,4,5] "hello"

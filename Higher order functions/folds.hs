@@ -62,12 +62,16 @@ last' :: [a] -> a
 last' = foldl1 (\_ x -> x) 
 
 
--- doing a left fold over the list [3,4,5,6] with g as the binary function and z as the accumulator is the equivalent of g (g (g (g z 3) 4) 5) 6.
+-- doing a left fold over the list [3,4,5,6] with g as the binary function and z as the accumulator is the equivalent to g (g (g (g z 3) 4) 5) 6.
+-- foldl g z [3, 4, 5, 6] == (((z `g` 3) `g` 4) `g` 5) `g` 6
 -- => flip (:) (flip (:) (flip (:) (flip (:) [] 3) 4) 5) 6
+
+-- doing a right fold over the list [3,4,5,6] with g as the binary function and z as the accumulator is the equivalent to g 6 (g 5 (g 4 (g z 3))).
+-- foldr g z [3, 4, 5, 6] == 3 `g` (4 `g` (5 `g` (6 `g` z)))
 
 --scanl and scanr are like foldl and foldr, only they report all the intermediate accumulator states in the form of a list. 
 -- scanl1 and scanr1, are analogous to foldl1 and foldr1.
--- When using a scanl, the final result will be in the last element of the resulting list while a scanr will place the result in the head.
+-- When using a scanl, the final result(what you would get by using fold) will be in the last element of the resulting list while a scanr will place the result in the head.
 {-
 ghci> scanl (+) 0 [3,5,2,1]  
 [0,3,8,10,11]  

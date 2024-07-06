@@ -19,7 +19,7 @@ ghci> (max 4) 5
 --The space is sort of like an operator and it has the highest precedence.
 
 
---Partial application: calling a function with too few parameters, we get back a partially applied function, meaning a function that takes as many parameters as we left out. 
+--Partial application: calling a function with too few parameters, we get back a partially applied function, which takes as many parameters as we left out. 
 -- # too few parameters == no. parameters (given when calling < asked in definition))
 --Using partial application is a neat way to create functions on the fly so we can pass them to another function or to seed them with some data.
 
@@ -46,8 +46,7 @@ divideByTen = (/10)
 -}
 
 
---if we try to just do Partial application in GHCI directly instead of binding it to a name with a let or passing it to another function, 
---It will tell us that the expression produced a function of type a -> a but it doesn't know how to print it to the screen. 
+--if we try to just do Partial application in GHCI directly instead of binding it to a name with a let or passing it to another function, it will tell us that the expression produced a function of type a -> a but it doesn't know how to print it to the screen. 
 -- GHCi passes everything to the show function by default.
 --Functions aren't instances of the Show typeclass, so we can't get a neat string representation of a function.
 
