@@ -9,7 +9,7 @@
 --All the functions, types and typeclasses that we've dealt with so far were part of the Prelude module, which is imported by default.
 
 
--- * syntax: import <module name>
+-- * syntax: import <module name> -- " " sep multiple
 -- must be done before defining any functions, so imports are usually done at the top of the file.
 import Data.List 
 
@@ -17,8 +17,8 @@ import Data.List
 
 
 {-
-* GHCi syntax: ghci> :m <module name>
-ghci> :m + Data.List Data.Map Data.Set  
+* GHCi syntax: ghci> :m + <module name> -- " " sep multiple
+<> ghci> :m + Data.List Data.Map Data.Set  
 -}
 
 -- If we wanted to import only few functions from module, we'd do this:

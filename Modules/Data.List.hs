@@ -2,7 +2,7 @@ import Data.List
 -- all about lists
 
 
-numUniques :: (Eq a) => [a] -> Int  
+numUniques :: (Eq a) => [a] -> Int
 numUniques = length . nub  
 --nub is a function defined in Data.List that, takes a list and weeds out duplicate elements.
 
@@ -14,9 +14,9 @@ intersperse' :: a -> [a] -> [a]
 intersperse' _ [] = []
 intersperse' sep (x:xs) = x:sep: intersperse' sep xs
 {-
-ghci> intersperse '.' "MONKEY"  
+<> ghci> intersperse '.' "MONKEY"
 "M.O.N.K.E.Y"  
-ghci> intersperse 0 [1,2,3,4,5,6]  
+<> ghci> intersperse 0 [1,2,3,4,5,6]  
 [1,0,2,0,3,0,4,0,5,0,6]  
 -}
 
@@ -25,9 +25,9 @@ intercalate' :: [a] -> [[a]] -> [a]
 intercalate' sep xxs = concat $ intersperse sep xxs
 
 {-
-ghci> intercalate " " ["hey","there","folks"]  
+<> ghci> intercalate " " ["hey","there","folks"]  
 "hey there folks"  
-ghci> intercalate [0,0,0] [[1,2,3],[4,5,6],[7,8,9]]  
+<> ghci> intercalate [0,0,0] [[1,2,3],[4,5,6],[7,8,9]]  
 [1,2,3,0,0,0,4,5,6,0,0,0,7,8,9]  
 -}
 
@@ -37,16 +37,16 @@ transpose' [] = []
 transpose' ([]:_) = []
 transpose' x = map head x : transpose' (map tail x)
 {-
-ghci> transpose [[1,2,3],[4,5,6],[7,8,9]]  
+<> ghci> transpose [[1,2,3],[4,5,6],[7,8,9]]  
 [[1,4,7],[2,5,8],[3,6,9]]  
-ghci> transpose ["hey","there","folks"]  
+<> ghci> transpose ["hey","there","folks"]  
 ["htf","eho","yel","rk","es"] 
 -}
 
 {-
 Say we have the polynomials 3x2 + 5x + 9, 10x3 + 9 and 8x3 + 5x2 + x - 1 and we want to add them together. We can use the lists [0,3,5,9], [10,0,0,9] and [8,5,1,-1] to represent them in Haskell. Now, to add them, all we have to do is this:
 
-ghci> map sum $ transpose [[0,3,5,9],[10,0,0,9],[8,5,1,-1]]  
+<> ghci> map sum $ transpose [[0,3,5,9],[10,0,0,9],[8,5,1,-1]]  
 [18,8,6,17] 
 -}
 
@@ -69,18 +69,18 @@ concat' xxs = foldl1 (++) xxs
 and' :: (Bool a) => [a] -> a
 and' [] = True
 and' = foldr1 &&
-{-ghci> and $ map (>4) [5,6,7,8]  
+{-<> ghci> and $ map (>4) [5,6,7,8]  
 True  
-ghci> and $ map (==4) [4,4,4,3,4]  
+<> ghci> and $ map (==4) [4,4,4,3,4]  
 False  -}
 
 --or is like and, only it returns True if any of the boolean values in a list is True.
 or' :: (Bool a) => [a] -> a --?
 or' [] = False
 or' = foldr1 ||
-{-ghci> or $ map (==4) [2,3,4,5,6,1]  
+{-<> ghci> or $ map (==4) [2,3,4,5,6,1]  
 True  
-ghci> or $ map (>4) [1,2,3]  
+<> ghci> or $ map (>4) [1,2,3]  
 False -}
 
 
@@ -89,13 +89,13 @@ any' :: (a -> bool) -> [a] -> Bool
 any' p = or . map p
 all' :: (a -> bool) -> [a] -> Bool
 all' p = and . map p
-{-ghci> any (==4) [2,3,5,6,1,4]  
+{-<> ghci> any (==4) [2,3,5,6,1,4]  
 True  
-ghci> all (>4) [6,9,10]  
+<> ghci> all (>4) [6,9,10]  
 True  
-ghci> all (`elem` ['A'..'Z']) "HEYGUYSwhatsup"  
+<> ghci> all (`elem` ['A'..'Z']) "HEYGUYSwhatsup"  
 False  
-ghci> any (`elem` ['A'..'Z']) "HEYGUYSwhatsup"  
+<> ghci> any (`elem` ['A'..'Z']) "HEYGUYSwhatsup"  
 True -}
 -- instead of mapping over a list, 
 
@@ -104,9 +104,9 @@ True -}
 iterate :: (a -> a) -> a -> [a]
 iterate f x = f x : iterate f $ f x
 {-
-ghci> take 10 $ iterate (*2) 1  
+<> ghci> take 10 $ iterate (*2) 1  
 [1,2,4,8,16,32,64,128,256,512]  
-ghci> take 3 $ iterate (++ "haha") "haha"  
+<> ghci> take 3 $ iterate (++ "haha") "haha"  
 ["haha","hahahaha","hahahahahaha"]  
 -}
 
@@ -115,13 +115,13 @@ ghci> take 3 $ iterate (++ "haha") "haha"
 splitAt' :: Int -> [a] -> ([a],[a])
 splitAt' n xs = (take n xs, drop  n xs)
 {-
-ghci> splitAt 3 "heyman"  
+<> ghci> splitAt 3 "heyman"  
 ("hey","man")  
-ghci> splitAt 100 "heyman"  
+<> ghci> splitAt 100 "heyman"  
 ("heyman","")  
-ghci> splitAt (-3) "heyman"  
+<> ghci> splitAt (-3) "heyman"  
 ("","heyman")  
-ghci> let (a,b) = splitAt 3 "foobar" in b ++ a  
+<> ghci> let (a,b) = splitAt 3 "foobar" in b ++ a  
 "barfoo" 
 -}
 
@@ -132,11 +132,11 @@ takeWhile' p (x:xs)
     | p x = x : takeWhile' p xs
     | otherwise = []
 {-
-ghci> takeWhile (>3) [6,5,4,3,2,1,2,3,4,5,4,3,2,1]  
+<> ghci> takeWhile (>3) [6,5,4,3,2,1,2,3,4,5,4,3,2,1]  
 [6,5,4]  
-ghci> takeWhile (/=' ') "This is a sentence"  
+<> ghci> takeWhile (/=' ') "This is a sentence"  
 "This"
-ghci> sum $ takeWhile (<10000) $ map (^3) [1..]  
+<> ghci> sum . takeWhile (<10000) . map (^3) $ [1..]  
 53361  
 -}
 
@@ -146,13 +146,13 @@ dropWhile' p (x:xs)
     | p x = [] : dropWhile' p xs
     | otherwise = xs
 {-
-ghci> dropWhile (/=' ') "This is a sentence"  
+<> ghci> dropWhile (/=' ') "This is a sentence"  
 " is a sentence"  
-ghci> dropWhile (<3) [1,2,2,2,3,4,5,4,3,2,1]  
+<> ghci> dropWhile (<3) [1,2,2,2,3,4,5,4,3,2,1]  
 [3,4,5,4,3,2,1]  
 
-ghci> let stock = [(994.4,2008,9,1),(995.2,2008,9,2),(999.2,2008,9,3),(1001.4,2008,9,4),(998.3,2008,9,5)]  
-ghci> head $ dropWhile (\(val,y,m,d) -> val < 1000) stock 
+<> ghci> let stock = [(994.4,2008,9,1),(995.2,2008,9,2),(999.2,2008,9,3),(1001.4,2008,9,4),(998.3,2008,9,5)]  
+<> ghci> head $ dropWhile (\(val,y,m,d) -> val < 1000) stock 
 (1001.4,2008,9,4) 
 -}
 
@@ -165,9 +165,9 @@ span' p xs@(x:xs') =
     | p x = let (ys,zs) = span p xs' in (x:ys,zs)
     | otherwise = ([],xs)
 {-
-ghci> let (fw, rest) = span (/=' ') "This is a sentence" in "First word:" ++ fw ++ ", the rest:" ++ rest  
+<> ghci> let (fw, rest) = span (/=' ') "This is a sentence" in "First word:" ++ fw ++ ", the rest:" ++ rest  
 "First word: This, the rest: is a sentence" 
-ghci> span (/=4) [1,2,3,4,5,6,7]  
+<> ghci> span (/=4) [1,2,3,4,5,6,7]  
 ([1,2,3],[4,5,6,7])  
 -}
 
@@ -175,7 +175,7 @@ ghci> span (/=4) [1,2,3,4,5,6,7]
 --break p == span (not . p)
 -- the second list in the result will start with the first element that satisfies the predicate.
 {-
-ghci> break (==4) [1,2,3,4,5,6,7]  
+<> ghci> break (==4) [1,2,3,4,5,6,7]  
 ([1,2,3],[4,5,6,7])  
 -}
 
@@ -219,9 +219,9 @@ sortBy' cmp = mergeAll . sequences
         merge [] bs         = bs
         merge as []         = as
 {-
-ghci> sort [8,5,3,2,1,6,4,2]  
+<> ghci> sort [8,5,3,2,1,6,4,2]  
 [1,2,2,3,4,5,6,8]  
-ghci> sort "This will be sorted soon"  
+<> ghci> sort "This will be sorted soon"  
 "    Tbdeehiillnooorssstw"  
 -}
 
@@ -229,15 +229,14 @@ ghci> sort "This will be sorted soon"
 --group takes a list and groups adjacent elements into sublists if they are equal.
 group' :: (Eq a) => [a] -> [[a]]
 group' [] = []
-group' (x:xs)
-    | x == xs = (x:ys) : group' zs
-        where (ys,zs) = span (== x) ys
+group' (x:xs) = (x:ys) : group' zs
+        where (ys,zs) = span (== x) xs
 --If we sort a list before grouping it, we can find out how many times each element appears in the list.
 
 
 --inits and tails are like init and tail, only they recursively apply that to a list until there's nothing left.
 inits' :: [a] -> [[a]]
-inits' [] == [[]]
+inits' [] == [[]]  
 inits xs = [] : zipWith take [1..] $ repeat xs
 --inits' = scanl (\acc x -> (acc ++ x)) []
 tails' :: [a] -> [[a]]
@@ -245,12 +244,12 @@ tails' [] = [[]]
 tails' xs = zipWith drop [0..] (repeat xs) ++ [[]]
 
 {-
-ghci> let w = "w00t" in zip (inits w) (tails w)  
+<> ghci> let w = "w00t" in zip (inits w) (tails w)  
 [("","w00t"),("w","00t"),("w0","0t"),("w00","t"),("w00t","")]  
 -}
 
 
---fold to implement searching a list for a sublist
+--fold to implement searching a list for a sublist =|= isInfixOf
 search :: (Eq a) => [a] -> [a] -> Bool
 search xs ys = 
     let xsl = length xs  
@@ -258,6 +257,7 @@ search xs ys =
     --if take xsl x == xs then True else acc
 
 --isInfixOf searches for a sublist within a list and returns True if the sublist we're looking for is somewhere inside the target list. -- above similar search
+
 --isPrefixOf and isSuffixOf search for a sublist at the beginning and at the end of a list, respectively. foldl & foldr
 
 
@@ -272,27 +272,58 @@ partition' p = foldr (select p) ([],[])
         | otherwise = (ts,x:fs)
 
 
-{-
+
 -- find takes a list and a predicate and returns the first element that satisfies the predicate
-find' (a -> Bool) -> [a] -> Maybe a
-find p = listToMaybe . filter p
--- returns that element wrapped in a Maybe value.
--- a Maybe value can either be Just something or Nothing
+find' :: (a -> Bool) -> [a] -> Maybe a
+find p = listToMaybe. filter p
 -- eg. find (\(val,y,m,d) -> val > 1000) stock,
+-- returns that element wrapped in a Maybe value.
+{-
+ghci> find (>4) [1,2,3,4,5,6]  
+Just 5  
+ghci> find (>9) [1,2,3,4,5,6]  
+Nothing 
+-}
+
+
+-- a Maybe value can either be Just something or Nothing
+--list - empty list or a list with some elements (one or more than one), Maybe value- no elements or a single element. 
+--And like the type of a list of, say, integers is [Int], the type of maybe having an integer is Maybe Int
+-- find (\(val,y,m,d) -> val > 1000) stock instead of head (dropWhile (\(val,y,m,d) -> val < 1000) stock)
 
 
 -- todo https://hackage.haskell.org/package/ghc-internal-9.1001.0/docs/src/GHC.Internal.Data.OldList.html#find
 -- todo https://hackage.haskell.org/package/base-4.20.0.1/docs/Data-List.html#v:elemIndex
 
 
--- elemIndex is like elem, only it doesn't return a boolean value. It either returns, the index of the element we're looking for or If that isn't in our list, Nothing.
--- Todo elemIndex' :: (Eq a) => a -> [a] -> Maybe Int
+-- elemIndex is like elem, only it doesn't return a boolean value.
+-- It either returns, the index of the element we're looking for or If that isn't in our list, Nothing.
+elemIndex' :: (Eq a) => a -> [a] -> Maybe Int
+elemIndex' x xs = findIndex' (x==) xs
+{-ghci> ' ' `elemIndices` "Where are the spaces?"  
+[5,9,13]  -}
 
---elemIndices is like elemIndex, only it returns a list of indices, in case the element we're looking for crops up in our list several times. Because we're using a list to represent the indices, we don't need a Maybe type, because failure can be represented as the empty list, which is very much synonymous to Nothing
+
+--elemIndices is like elemIndex, only it returns a list of indices, whenever the element we're looking for crops up in our list. 
+elemIndices' :: (Eq a) => a -> [a] -> [a]
+elemIndices' x xs = findIndices' (x==) xs
+--Because we're using a list to represent the indices, we don't need a Maybe type, because failure can be represented as, the empty list very much synonymous to Nothing
 
 
---findIndex is like find, but it maybe returns the index of the first element that satisfies the predicate. findIndices returns the indices of all elements that satisfy the predicate in the form of a list.
+-- findIndex is like find, but it maybe returns the index of the first element that satisfies the predicate. 
+findIndex'       :: (a -> Bool) -> [a] -> Maybe Int
+findIndex' p     = listToMaybe . findIndices' p
+-- findIndices returns the indices of all elements that satisfy the predicate in the form of a list.
+findIndices'      :: (a -> Bool) -> [a] -> [Int]
+findIndices' p xs = [ i | (x,i) <- zip xs [0..], p x]
 
+{-
+ghci> findIndex (==4) [5,3,2,1,6,4]  
+Just 5  
+ghci> findIndex (==7) [5,3,2,1,6,4]  
+Nothing  
+ghci> findIndices (`elem` ['A'..'Z']) "Where Are The Caps?"  
+[0,6,10,14]  
 -}
 
 
@@ -300,108 +331,129 @@ find p = listToMaybe . filter p
 -- if we want to zip together 3,4,..,7(n) lists or 3,4,..,7(n) lists with a function that takes 3,4,..,7(n) parameters, we have zip(n) and zipWith(n) etc.
 --//There's also a very clever way for zipping infinite numbers of lists
 {-
-ghci> zipWith3 (\x y z -> x + y + z) [1,2,3] [4,5,2,2] [2,2,3]  
+<> ghci> zipWith3 (\x y z -> x + y + z) [1,2,3] [4,5,2,2] [2,2,3]  
 [7,9,8]  
-ghci> zip4 [2,3,3] [2,2,2] [5,5,3] [2,2,2]  
+<> ghci> zip4 [2,3,3] [2,2,2] [5,5,3] [2,2,2]  
 [(2,2,5,2),(3,2,5,2),(3,2,3,2)] 
 -}
 -- lists that are longer than the shortest list that's being zipped are cut down to size
 
 
+
 --lines takes a string and returns every line of that string as separate element of a list. useful function when dealing with files or input from somewhere
+lines' :: string -> [string]
+lines' "" = []
+lines' s' =  cons (case break (== '\n') s of
+                    (l, s') -> (l, case s' of
+                        []      -> []
+                        _:s''   -> lines s''))
+    where
+        cons ~(h, t)        =  h : t
 --'\n' is the character for a unix newline. Backslashes have special meaning in Haskell strings and characters.
+
 --unlines is the inverse function of lines. It takes a list of strings and joins them together using a '\n'.
+unlines' :: [string] -> string
+unlines [] = []
+unlines (l:ls) = l ++ '\n' : unlines ls
 {-
-ghci> lines "first line\nsecond line\nthird line"  
+<> ghci> lines "first line\nsecond line\nthird line"  
 ["first line","second line","third line"]
-ghci> unlines ["first line", "second line", "third line"]  
+<> ghci> unlines ["first line", "second line", "third line"]  
 "first line\nsecond line\nthird line\n" 
 -}
 
 
 --words and unwords are for splitting a line of text into words or joining a list of words into a text. Lists(strings) sep by ,
 {-
-ghci> words "hey these           are    the words in this\nsentence"  
+<> ghci> words "hey these           are    the words in this\nsentence"  
 ["hey","these","are","the","words","in","this","sentence"]  
-ghci> unwords ["hey","there","mate"]  
+<> ghci> unwords ["hey","there","mate"]  
 "hey there mate" 
 -}
 
 
---nub, takes a list and weeds out the duplicate elements, returning a list whose every element is a unique.
+--nub, takes a list and removes the duplicate elements, returning one with only unique elements.
 {-
-ghci> nub [1,2,3,4,3,2,1,2,3,4,3,2,1]  
+<> ghci> nub [1,2,3,4,3,2,1,2,3,4,3,2,1]  
 [1,2,3,4]  
-ghci> nub "Lots of words and stuff"  
+<> ghci> nub "Lots of words and stuff"  
 "Lots fwrdanu" 
 -}
 
 
---delete takes an element and a list and deletes the first occurrence of that element in the list.
+--delete takes an element and a list and deletes the first occurrence of that that in it.
 {-
-ghci> delete 'h' "hey there ghang!"  
+<> ghci> delete 'h' "hey there ghang!"  
 "ey there ghang!"  
-ghci> delete 'h' . delete 'h' $ "hey there ghang!"  
-"ey tere ghang!" 
+<> ghci> delete 'h' . delete 'h' $ "hey there ghang!"  
+"ey tere ghang!"
 -}
 
 
--- \\ is the list difference function (acts like a set difference). For every element in the right-hand list, it removes a matching element in the left one.
+-- \\ (the list difference function, like a set difference). For every element in the right-hand list, it removes a matching element in the left one.
 {-
-ghci> [1..10] \\ [2,5,9]  -- == delete 2 . delete 5 . delete 9 $ [1..10]
+<> ghci> [1..10] \\ [2,5,9]  -- == delete 2 . delete 5 . delete 9 $ [1..10]
 [1,3,4,6,7,8,10]  
-ghci> "Im a big baby" \\ "big"  
+<> ghci> "Im a big baby" \\ "big"  
 "Im a  baby"
 -}
 
---union (like a function on sets),returns the union of two lists. It goes over every element in the second list and appends it to the first one if it isn't already in yet. 
+--union (like a function on sets),returns the union of two lists. It goes over every element in the second list and appends it to the first one if it isn't already in yet.
+--duplicates are removed from the second list.
 {-
-ghci> "hey man" `union` "man what's up"  
+<> ghci> "hey man" `union` "man what's up"  
 "hey manwt'sup"  
-ghci> [1..7] `union` [5..10]  
+<> ghci> [1..7] `union` [5..10]  
 [1,2,3,4,5,6,7,8,9,10] 
 -}
 
---If we use insert to insert into a sorted list, the resulting list will be kept sorted.
 --intersect works like set intersection. It returns only the elements that are found in both lists.
+{-ghci> [1..7] `intersect` [5..10]  
+[5,6,7] -}
+
+--insert takes an element and a list of elements that can be sorted and inserts it into the last position where it's still less than or equal to the next element. 
+--In other words, insert will start at the beginning of the list and then keep going until it finds an element that's equal to or greater than the element that we're inserting and it will insert it just before the element.
+--If we use insert to insert into a sorted list, the resulting list will be kept sorted.
 {-
-ghci> insert 4 [3,5,1,2,8,2]  
+<> ghci> insert 4 [3,5,1,2,8,2]  
 [3,4,5,1,2,8,2]
-ghci> insert 4 [1,2,3,5,6,7]  
+<> ghci> insert 'g' $ ['a'..'f'] ++ ['h'..'z']  
+"abcdefghijklmnopqrstuvwxyz"  
+<> ghci> insert 4 [1,2,3,5,6,7]  
 [1,2,3,4,5,6,7] 
 -}
 
 
---length, take, drop, splitAt, !! and replicate have in common is that they take an Int as one of their parameters (or return an Int), even though they could be more generic and usable if they just took any type that's part of the Integral or Num typeclasses (depending on the functions).
+--length, take, drop, splitAt, !! and replicate take an Int as one of their parameters (or return an Int), even though they could be more generic and usable if they took any type that's part of the Integral or Num typeclasses (depending on the functions).
 --That's why Data.List has their more generic equivalents(with Num), named genericLength, genericTake, genericDrop, genericSplitAt, genericIndex and genericReplicate
 
---The nub, delete, union, intersect and group functions all have their more general counterparts called nubBy, deleteBy, unionBy, intersectBy and groupBy
---The difference between them is that the first set of functions use == to test for equality, whereas the By ones also take an equality function and then compare them by using that equality function. group is the same as groupBy (==)
+--The nub, delete, union, intersect and group functions all also have their more general counterparts called nubBy, deleteBy, unionBy, intersectBy and groupBy
+--The difference between them is that the first set of functions use == to test for equality, whereas the By ones also take an equality function and then compare them by using that equality function. 
+--group is the same as groupBy (==)
 
 -- eg.  we want is to group them by whether they are negative or not.
 {-
-ghci> let values = [-4.3, -2.4, -1.2, 0.4, 2.3, 5.9, 10.5, 29.1, 5.3, -2.4, -14.5, 2.9, 2.3]  
-ghci> groupBy (\x y -> (x > 0) == (y > 0)) values  
+<> ghci> let values = [-4.3, -2.4, -1.2, 0.4, 2.3, 5.9, 10.5, 29.1, 5.3, -2.4, -14.5, 2.9, 2.3]  
+<> ghci> groupBy (\x y -> (x > 0) == (y > 0)) values  -- // \x y -> (x > 0) && (y > 0) || (x <= 0) && (y <= 0)
 [[-4.3,-2.4,-1.2],[0.4,2.3,5.9,10.5,29.1,5.3],[-2.4,-14.5],[2.9,2.3]] 
 -}
 
 
 --on function from Data.Function. 
-on :: (b -> b -> c) -> (a -> b) -> a -> a -> c  
-f `on` g = \x y -> f (g x) (g y)  
+on' :: (b -> b -> c) -> (a -> b) -> a -> a -> c  
+f `on'` g = \x y -> f (g x) (g y)  
 {-
-ghci> groupBy ((==) `on` (> 0)) values  
+<> ghci> groupBy ((==) `on` (> 0)) values  
 [[-4.3,-2.4,-1.2],[0.4,2.3,5.9,10.5,29.1,5.3],[-2.4,-14.5],[2.9,2.3]] 
 -}
 
-
---Similarly, the sort, insert, maximum and minimum also have their more general equivalents, sortBy, insertBy, maximumBy and minimumBy which take a function that determine if one element is greater, smaller or equal to the other
+--Similarly, the sort, insert, maximum and minimum also have their more general equivalents, sortBy, insertBy, maximumBy and minimumBy which, take a function that determine if one element is greater, smaller or equal to the other
 
 
 --Lists can be compared, they are lexicographically. If we have a list of lists and we want to sort it not based on the inner lists' contents but on their lengths-
 {-
-ghci> let xs = [[5,4,5,4,4],[1,2,3],[3,5,4,3],[],[2],[2,2]]  
-ghci> sortBy (compare `on` length) xs  
+<> ghci> let xs = [[5,4,5,4,4],[1,2,3],[3,5,4,3],[],[2],[2,2]]  
+<> ghci> sortBy (compare `on` length) xs  
 [[],[2],[2,2],[1,2,3],[3,5,4,3],[5,4,5,4,4]]  
 -}
 
