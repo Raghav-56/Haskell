@@ -1,12 +1,14 @@
 import Data.Char
 import Data.Binary (encode)
 
---The Data.Char module+ exports functions that deal with characters. It's also helpful when filtering and mapping over strings because they're just lists of characters.
+--The Data.Char module+ exports functions that deal with characters. 
+--It's helpful when filtering and mapping over strings because they're just lists of characters.
 
 --Data.Char exports a bunch of predicates over characters. That is, functions that take a character and tell us whether some assumption about it is true or false.
 
 
 {-
+-- ! List of predicates
 
 -- isControl checks whether a character is a control character.
 
